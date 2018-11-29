@@ -1,4 +1,4 @@
-package org.mab.playground
+package org.mab.playground.activity
 
 import android.content.Context
 import android.content.res.Resources
@@ -15,6 +15,7 @@ import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_play_ground.*
+import org.mab.playground.R
 import kotlin.math.min
 import kotlin.math.sqrt
 
@@ -55,7 +56,7 @@ class PlayGroundActivity : AppCompatActivity() {
                     val maxCount: Int = min(((params.width / getBiggestTextSize()) * 4).toInt(), list.size)
                     val circleRadius1 = ((((params.width) / 2) * 0.8f).toInt())
                     val ROTAION_ANGLE_OFFSET = 360f / maxCount
-                    var multiplyer = 0
+                    var multiplier = 0
                     Log.d(TAG, "Max Ites Are : $maxCount")
                     (0 until maxCount / 2).forEach {
                         Log.d(TAG, "Index : $it")
@@ -67,12 +68,12 @@ class PlayGroundActivity : AppCompatActivity() {
                             layoutParams = ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT).apply {
                                 circleConstraint = circle.id
                                 circleRadius = circleRadius1
-                                circleAngle = (((ROTAION_ANGLE_OFFSET * multiplyer) + 90f) % 360f)
+                                circleAngle = (((ROTAION_ANGLE_OFFSET * multiplier) + 90f) % 360f)
                                 rotation = circleAngle
                             }
                         }
                         main_view.addView(textView)
-                        multiplyer++
+                        multiplier++
                     }
 
                     (list.size - (maxCount / 2) until list.size).forEach {
@@ -85,12 +86,12 @@ class PlayGroundActivity : AppCompatActivity() {
                             layoutParams = ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT).apply {
                                 circleConstraint = circle.id
                                 circleRadius = circleRadius1
-                                circleAngle = (((ROTAION_ANGLE_OFFSET * multiplyer) + 90f) % 360f)
+                                circleAngle = (((ROTAION_ANGLE_OFFSET * multiplier) + 90f) % 360f)
                                 rotation = circleAngle
                             }
                         }
                         main_view.addView(textView)
-                        multiplyer++
+                        multiplier++
                     }
                 }
             }

@@ -1,23 +1,22 @@
-package org.mab.playground
+package org.mab.playground.activity
 
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
-import android.support.v7.app.AppCompatActivity
+import android.graphics.Color
 import android.os.Bundle
 import android.support.constraint.ConstraintLayout
-import android.view.ViewTreeObserver
-import android.widget.TextView
-import kotlinx.android.synthetic.main.activity_main.*
+import android.support.v7.app.AppCompatActivity
+import android.util.Log
+import android.view.GestureDetector
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
-import android.graphics.Color
-import android.util.Log
-import android.view.MotionEvent
-import android.view.GestureDetector
+import android.view.ViewTreeObserver
 import android.view.animation.AccelerateInterpolator
 import android.widget.Scroller
-import java.lang.Exception
-import java.lang.IndexOutOfBoundsException
+import android.widget.TextView
+import kotlinx.android.synthetic.main.activity_main.*
+import org.mab.playground.R
 
 
 class MainActivity : AppCompatActivity() {
