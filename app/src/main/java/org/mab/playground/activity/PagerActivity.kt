@@ -9,6 +9,7 @@ import org.mab.playground.adapters.PagerAdapter
 import org.mab.playground.fragments.PageOneFragment
 import org.mab.playground.fragments.PageThreeFragment
 import org.mab.playground.fragments.PageTwoFragment
+import org.mab.playground.fragments.SearchFragment
 import org.mab.playground.listeners.PagerOperationListener
 import org.mab.playground.preferences.AppPreferences
 
@@ -51,7 +52,7 @@ class PagerActivity : AppCompatActivity(), PagerOperationListener {
         val fragmentList = ArrayList<Fragment>().apply {
             add(pageOne)
             add(pageTwo)
-            add(pageThree)
+            add(SearchFragment())
         }
         main_pager.adapter = PagerAdapter(supportFragmentManager, fragmentList)
 
