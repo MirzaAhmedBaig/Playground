@@ -8,27 +8,37 @@
     tools:context=".activity.PlayGroundActivity">
 
     <View
-        android:id="@+id/circle"
+        android:id="@+id/view5"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/circle_shape"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/rounded_view"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="-0.6" />
+    <org.mab.playground.customviews.WaveformView
+        android:id="@+id/wave_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        app:layout_constraintBottom_toBottomOf="@+id/view5"
+        app:layout_constraintEnd_toEndOf="@+id/view5"
+        app:layout_constraintStart_toStartOf="@+id/view5"
+        app:layout_constraintTop_toTopOf="@+id/view5" />
 
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.4" />
+    <org.mab.playground.customviews.RingsAnimationView
+        android:id="@+id/ring_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/wave_view"
+        app:layout_constraintEnd_toEndOf="@+id/wave_view"
+        app:layout_constraintStart_toStartOf="@+id/wave_view"
+        app:layout_constraintTop_toTopOf="@+id/wave_view" />
 
 </android.support.constraint.ConstraintLayout>

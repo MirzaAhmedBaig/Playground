@@ -6,4 +6,13 @@
     <string name="sun_image">sun Image</string>
     <string name="earth_image">earth image</string>
     <string name="fantastic_beast_text">While a strange dark force terrorises New York City, British magizoologist Newt Scamander enlists a non-magical Jacob\'s help to round up some escaped magical creatures.</string>
+    <string name="counting_description">Sensor: %1$s\nMax sensor event delay: %2$,d \u00B5s\nAge of
+        events in s:\n%3$s
+    </string>
+    <string name="sensor_counter">Step Counter</string>
+    <string name="Mindfulness">awefsdggsdfg</string>
+    <string name="breathing">breathing</string>
+    <string name="relaxation">relaxation</string>
+    <string name="swipe_when_done">swipe_when_done</string>
+
 </resources>

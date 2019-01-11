@@ -2,55 +2,72 @@ package org.mab.playground.activity
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.animation.AlphaAnimation
-import android.view.animation.Animation
+import android.util.Log
 import kotlinx.android.synthetic.main.activity_glow_view.*
+import org.avantari.odishadmapp.network.OrissaAPI
 import org.mab.playground.R
+import org.mab.playground.network.models.UserDetails
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class GlowViewActivity : AppCompatActivity() {
 
 
+    private val TAG = GlowViewActivity::class.java.simpleName
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_glow_view)
 
-        animate.setOnClickListener {
-            handler.post(runnable)
-        }
 
+        request.setOnClickListener {
+            //            sendUserDetails(UserDetails("Mirza","7276137498"))
+            getUserDetails()
+        }
     }
 
-    var fromAlpha = 1f
-    var toAlpha = 0.4f
-    private var handler = android.os.Handler()
-    private var runnable = object : Runnable {
-        override fun run() {
-            arrow_one.startAnimation(animationOne)
-            arrow_two.startAnimation(animationTwo)
-            handler.postDelayed(this, 1000)
-        }
-
-    }
-
-    private val animationOne = AlphaAnimation(fromAlpha, toAlpha).apply {
-        duration = 500
-        setAnimationListener(object : Animation.AnimationListener {
-            override fun onAnimationEnd(animation: Animation?) {
-                fromAlpha += toAlpha
-                toAlpha = fromAlpha - toAlpha
-                fromAlpha -= toAlpha
+    private fun sendDemoRequest() {
+        OrissaAPI.networkManager.getHelloWorld().enqueue(object : Callback<String> {
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                t.printStackTrace()
+                Log.d(TAG, "onFailure $call")
             }
 
-            override fun onAnimationRepeat(animation: Animation?) {}
-
-            override fun onAnimationStart(animation: Animation?) {}
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+                Log.d(TAG, "onResponse ${response.body()} ${response.code()}")
+            }
 
         })
     }
-    private val animationTwo = AlphaAnimation(fromAlpha, toAlpha).apply {
-        duration = 500
-        startOffset = 100
+
+    private fun getUserDetails() {
+        OrissaAPI.networkManager.getUserDetails().enqueue(object : Callback<UserDetails> {
+            override fun onFailure(call: Call<UserDetails>, t: Throwable) {
+                t.printStackTrace()
+                Log.d(TAG, "onFailure $call")
+            }
+
+            override fun onResponse(call: Call<UserDetails>, response: Response<UserDetails>) {
+                Log.d(TAG, "onResponse ${response.body()} ${response.code()}")
+            }
+
+        })
+    }
+
+    private fun sendUserDetails(userDetails: UserDetails) {
+        OrissaAPI.networkManager.sendUserDetails(userDetails).enqueue(object : Callback<String> {
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                t.printStackTrace()
+                Log.d(TAG, "onFailure $call")
+            }
+
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+                Log.d(TAG, "onResponse ${response.body()} ${response.code()}")
+            }
+
+        })
     }
 
 

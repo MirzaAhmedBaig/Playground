@@ -11,12 +11,7 @@ import org.mab.playground.R
 
 class ConstraintStatesActivity : AppCompatActivity() {
 
-    private val constraintSet1 by lazy {
-        ConstraintSet().apply {
-            clone(constraintLayout)
-        }
-    }
-    val constraintSet2 by lazy {
+    val constraintSet by lazy {
         ConstraintSet()
     }
     private var toggle = false
@@ -31,19 +26,15 @@ class ConstraintStatesActivity : AppCompatActivity() {
 
 
         imageView2.setOnClickListener {
-            constraintSet2.clone(this@ConstraintStatesActivity, R.layout.state_end)
-            TransitionManager.beginDelayedTransition(constraintLayout)
-            constraintSet2.applyTo(constraintLayout)
-
 
             if (toggle) {
-                constraintSet2.clone(this@ConstraintStatesActivity, R.layout.activity_constraint_states)
+                constraintSet.clone(this@ConstraintStatesActivity, R.layout.activity_constraint_states)
                 TransitionManager.beginDelayedTransition(constraintLayout)
-                constraintSet2.applyTo(constraintLayout)
+                constraintSet.applyTo(constraintLayout)
             } else {
-                constraintSet2.clone(this@ConstraintStatesActivity, R.layout.state_end)
+                constraintSet.clone(this@ConstraintStatesActivity, R.layout.state_end)
                 TransitionManager.beginDelayedTransition(constraintLayout)
-                constraintSet2.applyTo(constraintLayout)
+                constraintSet.applyTo(constraintLayout)
             }
             toggle = !toggle
         }
